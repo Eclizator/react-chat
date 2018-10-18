@@ -5,17 +5,17 @@
   "dependencies": {
     "@material-ui/core": "^3.1.2",
     "@material-ui/icons": "^3.0.1",
+    "browser-router": "^0.2.0",
     "classnames": "^2.2.6",
-<<<<<<< HEAD
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-router-dom": "^4.3.1",
-=======
+    "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.20.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
->>>>>>> 1e2babf40ceab07bc4695fad0c7c1ca9b5224da2
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
