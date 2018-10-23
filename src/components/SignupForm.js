@@ -1,5 +1,4 @@
 import React from 'react';
-import fetch from 'isomorphic-fetch'
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -38,26 +37,18 @@ class SignupForm extends React.Component {
     return isValid;
   }
 
-  handleUsernameInputChange = (event) => {
+  handleInputChange = (event) => {
     event.persist();
+    const { name, value } = event.target;
+
     this.setState((prevState) => ({
-      username: {
-        ...prevState.username,
-        value: event.target.value,
+      [name]: {
+        ...prevState[name],
+        value,
       },
     }));
   }
 
-  handleInputChange = (event) => {
-    event.persist();
-    const {name , value} = event.target;
-    this.setState((prevState) =>({
-      [name]:{
-        ...prevState[name],
-        value,
-      }
-    }));
-  }
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -68,9 +59,7 @@ class SignupForm extends React.Component {
     const { username, password } = this.state;
 
     this.props.onSubmit(username.value, password.value);
-        
   }
- 
 
   render() {
     const { classes } = this.props;
@@ -85,7 +74,7 @@ class SignupForm extends React.Component {
           placeholder="Type your username..."
           type="text"
           margin="normal"
-          name='username'
+          name="username"
           autoComplete="username"
           value={username.value}
           onChange={this.handleInputChange}
@@ -95,10 +84,10 @@ class SignupForm extends React.Component {
           required
           fullWidth
           label="Password"
-          placeholder="Type your username..."
+          placeholder="Type your password..."
           type="password"
           margin="normal"
-          name='password'
+          name="password"
           autoComplete="new-password"
           value={password.value}
           onChange={this.handleInputChange}
@@ -108,10 +97,10 @@ class SignupForm extends React.Component {
           required
           fullWidth
           label="Repeat password"
-          placeholder="Type your username..."
+          placeholder="Repeat your password..."
           type="password"
           margin="normal"
-          name='repeatedPassword'
+          name="repeatedPassword"
           autoComplete="new-password"
           value={repeatedPassword.value}
           onChange={this.handleInputChange}

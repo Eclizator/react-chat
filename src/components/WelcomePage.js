@@ -26,6 +26,10 @@ class WelcomePage extends React.Component {
     activeTab: 0,
   }
 
+  componentDidMount() {
+    this.props.recieveAuth();
+  }
+
   handleTabChage = (event, value) => {
     this.setState({ activeTab: value });
   }
@@ -34,12 +38,11 @@ class WelcomePage extends React.Component {
     const { classes, signup, login, isAuthenticated } = this.props;
     const { activeTab } = this.state;
 
-    if(isAuthenticated){
-      return(
-      <Redirect to = '/chat'/>
+    if (isAuthenticated) {
+      return (
+        <Redirect to="/chat" />
       );
     }
-
 
     return (
       <React.Fragment>

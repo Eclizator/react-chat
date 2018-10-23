@@ -23,12 +23,13 @@ class LoginForm extends React.Component {
 
   handleInputChange = (event) => {
     event.persist();
-    const {name , value} = event.target;
-    this.setState((prevState) =>({
-      [name]:{
+    const { name, value } = event.target;
+
+    this.setState((prevState) => ({
+      [name]: {
         ...prevState[name],
         value,
-      }
+      },
     }));
   }
 
