@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import * as serviceWorker from './serviceWorker';
+import serviceWorker from './serviceWorker';
 import 'typeface-roboto'
 import './index.css';
-ReactDOM.render(
-<App />, 
-document.getElementById('root')
-);
 
-serviceWorker.unregister();
+const rootEl = document.getElementById('root');
+
+ReactDOM.render(<App />, rootEl);
+
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    ReactDOM.render(<App />, rootEl);
+  })
+}
+
+serviceWorker();
