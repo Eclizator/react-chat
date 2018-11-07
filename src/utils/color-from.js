@@ -29,6 +29,7 @@ export default function colorFrom(string) {
 
     return colors[colorIndex][500];
   } catch (e) {
+  // eslint-disable-next-line
     console.error(e);
     return blueGrey[500];
   }
