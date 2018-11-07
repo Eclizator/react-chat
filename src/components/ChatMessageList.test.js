@@ -75,7 +75,7 @@ describe('<ChatMessageList />', () => {
           path="/chat/:chatId?"
           render={props => <ChatMessageList {...mockProps} {...props} />}
         />
-              </MemoryRouter>)
+          </MemoryRouter>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -88,7 +88,7 @@ describe('<ChatMessageList />', () => {
           path="/chat/:chatId?"
           render={props => <ChatMessageList {...mockProps} {...props} messages={[]} />}
         />
-              </MemoryRouter>)
+      </MemoryRouter>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -100,4 +100,3 @@ class ChatMessageList extends React.Component {
 }
 
 export default withRouter(withStyles(styles)(ChatMessageList));
-
