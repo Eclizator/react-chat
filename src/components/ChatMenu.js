@@ -1,13 +1,25 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton'
+import PropTypes from 'prop-types';
+import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 class ChatMenu extends React.Component {
+  static propTypes = {
+    activeUser: PropTypes.shape({
+      isMember: PropTypes.bool.isRequired,
+      isCreator: PropTypes.bool.isRequired,
+      isChatMember: PropTypes.bool.isRequired,
+    }).isRequired,
+    disabled: PropTypes.bool.isRequired,
+    onLeaveClick: PropTypes.func.isRequired,
+    onDeleteClick: PropTypes.func.isRequired,
+  };
+
   state = {
     anchorEl: null,
-  }
+  };
 
   handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
@@ -20,12 +32,12 @@ class ChatMenu extends React.Component {
   handleLeaveClick = () => {
     this.handleClose();
     this.props.onLeaveClick();
-  }
+  };
 
   handleDeleteClick = () => {
     this.handleClose();
     this.props.onDeleteClick();
-  }
+  };
 
   render() {
     const { activeUser, disabled } = this.props;
@@ -61,3 +73,4 @@ class ChatMenu extends React.Component {
 }
 
 export default ChatMenu;
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -10,7 +11,7 @@ const styles = theme => ({
     left: 'auto',
     right: 0,
     bottom: 0,
-    width: `calc(100% - 600px)`,
+    width: 'calc(100% - 320px)',
     padding: theme.spacing.unit * 3,
   },
   messageInput: {
@@ -19,15 +20,23 @@ const styles = theme => ({
 });
 
 class MessageInput extends React.Component {
+  static propTypes = {
+    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+    showJoinButton: PropTypes.bool.isRequired,
+    onJoinButtonClick: PropTypes.func.isRequired,
+    disabled: PropTypes.bool.isRequired,
+    sendMessage: PropTypes.func.isRequired,
+  };
+
   state = {
     value: '',
-  }
+  };
 
   handleValueChange = (event) => {
     this.setState({
       value: event.target.value,
     });
-  }
+  };
 
   handleKeyPress = (event) => {
     const { value } = this.state;
@@ -36,10 +45,12 @@ class MessageInput extends React.Component {
       this.props.sendMessage(value);
       this.setState({ value: '' });
     }
-  }
+  };
 
   render() {
-    const { classes, showJoinButton, onJoinButtonClick, disabled } = this.props;
+    const {
+      classes, showJoinButton, onJoinButtonClick, disabled,
+    } = this.props;
 
     return (
       <div className={classes.messageInputWrapper}>
@@ -49,7 +60,7 @@ class MessageInput extends React.Component {
               fullWidth
               variant="raised"
               color="primary"
-              disabled = { disabled}
+              disabled={disabled}
               onClick={onJoinButtonClick}
             >
               Join
@@ -58,7 +69,7 @@ class MessageInput extends React.Component {
             <Input
               fullWidth
               placeholder="Type your message…"
-              disabled = { disabled}
+              disabled={disabled}
               value={this.state.value}
               onChange={this.handleValueChange}
               onKeyPress={this.handleKeyPress}
@@ -68,6 +79,6 @@ class MessageInput extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default withStyles(styles)(MessageInput);
